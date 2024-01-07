@@ -3,6 +3,7 @@ import "./App.css"
 import WeatherDescription from './components/WeatherDescription/WeatherDescription'
 import SearchBar from './components/SearchBar/SearchBar'
 import WeatherCard from './components/WeatherCard/WeatherCard'
+import Data from './components/Data/Data'
 const App = () => {
   return (
     <>
@@ -41,6 +42,7 @@ const App = () => {
             <WeatherCard location="Saudia" value="35°C" assumption="Feels like 40°C" />
           </div>
         </div>
+        <Data />
       </div>
     </>
   )
