@@ -12,20 +12,24 @@
 .input-border {
     width: 35rem;
     height: 2.5rem;
-    border-radius: 1rem;
+    border-radius: 2rem;
     border: 1px solid;
     border-color: rgb(197, 196, 195);
     border-width: 3px;
 }
 
 .search-bar {
-    font-size: 1.5rem;
-    width: 30rem;
+    font-size: 17px;
+    width: 90%;
     border: none;
     height: 2rem;
     background-color: transparent;
     color: white;
     outline: none;
+}
+
+.search-bar::placeholder {
+    color: #c0bebe;
 }
 
 .input-border span {

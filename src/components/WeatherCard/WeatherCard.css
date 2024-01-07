@@ -1,0 +1,39 @@
+.card-box {
+    height: 14.5rem;
+    width: 12rem;
+    box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(1px) saturate(106%);
+    -webkit-backdrop-filter: blur(1px) saturate(106%);
+    background-color: rgba(255, 255, 255, 0.01);
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-box-temperature {
+    font-size: 4rem;
+    font-weight: 700;
+    color: whitesmoke;
+}
+
+.card-box-assumption {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgb(227, 223, 223);
+}
+
+.card-box-location {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgb(227, 223, 223);
+
+}
+
+.card-inner-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+}

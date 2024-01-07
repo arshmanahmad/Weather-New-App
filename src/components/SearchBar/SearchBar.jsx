@@ -13,12 +13,12 @@ const SearchBar = () => {
     return (
         <>
             <div className='search-bar-container flex-box '>
-                <div className="input-border flex-box">
-                    <input className='search-bar' value={searchValue} onChange={handleChange} placeholder='search here' type="text" />
+                <form action="" className="input-border flex-box">
+                    <input className='search-bar' value={searchValue} onChange={handleChange} placeholder='Search Location...' type="text" />
                     <span onClick={handleClick} class="material-symbols-outlined">
                         search
                     </span>
-                </div>
+                </form>
             </div>
         </>
     )
