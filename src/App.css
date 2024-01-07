@@ -71,7 +71,7 @@
 }
 
 .description-inner-container {
-  margin-top: 4.5rem;
+  margin-top: 9rem;
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
@@ -85,7 +85,7 @@
 
 .second-row-container {
   display: flex;
-  height: 60%;
+  height: 42.5%;
   align-items: end;
 }
 
