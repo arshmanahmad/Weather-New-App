@@ -1,5 +1,4 @@
 .search-bar-container {
-    width: 100%;
     height: 6rem;
 }
 
@@ -7,6 +6,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.searchBtn {
+    border: none;
+    outline: none;
+    background: none;
 }
 
 .input-border {

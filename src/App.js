@@ -1,49 +1,83 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import "./App.css"
 import WeatherDescription from './components/WeatherDescription/WeatherDescription'
 import SearchBar from './components/SearchBar/SearchBar'
 import WeatherCard from './components/WeatherCard/WeatherCard'
-import Data from './components/Data/Data'
+import { DataContext } from './context/AppData'
+import axios from 'axios'
+
 const App = () => {
+
+  const { weatherInfo, setWeatherInfo } = useContext(DataContext);
+
+
+  const fetchWeatherInfo = async () => {
+    await axios.get("https://weatherapi-com.p.rapidapi.com/forecast.json", {
+      params: { q: "Khulna City" },
+      headers: {
+        'X-RapidAPI-Key': '2819954955msh9d66056844d80fbp168d10jsn2da9c582f5e8',
+        'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+      }
+    }).then(response => {
+      console.log(response);
+      setWeatherInfo(response.data);
+    }).catch(error => {
+      console.log(error);
+    })
+  }
+
+  useEffect(() => {
+    fetchWeatherInfo(); // eslint-disable-next-line
+  }, [])
+
+
   return (
     <>
-      <div className="main-container">
-        <div className="first-row-container">
-          <div className="weather-info-container">
-            <div className="weather-material-container">
-              <span class="material-symbols-outlined">
+      {
+        weatherInfo ? <>
+          <div className="main-container">
+            <div className="first-row-container">
+              <div className="weather-info-container">
+                <div className="weather-material-container">
+                  {/* <span class="material-symbols-outlined">
                 foggy
-              </span>
-              <p className="weather-condition-para">Fog</p>
-              <p className="city-para">Khulna City</p>
-              <h1 className="temperature-heading">28°C</h1>
-            </div>
+              </span> */}
+                  {
+                    weatherInfo && <img src={weatherInfo.current.condition.icon} alt="weather-icon" />
+                  }
+                  <p className="weather-condition-para">{weatherInfo && weatherInfo.current.condition.text}</p>
+                  <p className="city-para">{`${weatherInfo.location.name} , ${weatherInfo.location.country}`}</p>
+                  <h1 className="temperature-heading">{weatherInfo && `${weatherInfo.current.temp_c}°C`}</h1>
+                </div>
 
-          </div>
-          <div className="search-bar-container">
-            <SearchBar />
-          </div>
-          <div className="description-container">
-            <div className="description-inner-container">
-              <WeatherDescription image="" property="Humidity" value="50 %" />
-              <WeatherDescription image="" property="Air Pressure" value="1009.483 PS" />
-              <WeatherDescription image="" property="Chance of Rain" value="0%" />
-              <WeatherDescription image="" property="Wind Speed" value="1.4 km/h" />
+              </div>
+              <div className="search-bar-container">
+                <SearchBar />
+              </div>
+              <div className="description-container">
+                <div className="description-inner-container">
+                  <WeatherDescription image="" property="Humidity" value={weatherInfo.current.humidity + "%"} />
+                  <WeatherDescription image="" property="Air Pressure" value={`${weatherInfo.current.pressure_mb} PS`} />
+                  <WeatherDescription image="" property="Clouds" value={`${weatherInfo.current.cloud}%`} />
+                  <WeatherDescription image="" property="Wind Speed" value={`${weatherInfo.current.wind_kph} km/h`} />
+                </div>
+              </div>
+            </div>
+            <div className="second-row-container">
+              <div className="card-container">
+                <WeatherCard location="New York" />
+                <WeatherCard location="Dubai" />
+                <WeatherCard location="London" />
+                <WeatherCard location="Berlin" />
+                <WeatherCard location="Kutaisi" />
+              </div>
             </div>
           </div>
-        </div>
-        <div className="second-row-container">
-          <div className="card-container">
-            <WeatherCard location="London" value="28°C" assumption="Feels like 30°C" />
-            <WeatherCard location="Pakistan" value="12°C" assumption="Feels like 14°C" />
-            <WeatherCard location="India" value="19°C" assumption="Feels like 21°C" />
-            <WeatherCard location="Turkey" value="8°C" assumption="Feels like 12°C" />
-            <WeatherCard location="Dubai" value="32°C" assumption="Feels like 35°C" />
-            <WeatherCard location="Saudia" value="35°C" assumption="Feels like 40°C" />
-          </div>
-        </div>
-        <Data />
-      </div>
+        </> :
+          <>
+            <h1>Loading...</h1>
+          </>
+      }
     </>
   )
 }

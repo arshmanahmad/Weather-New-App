@@ -1,6 +1,6 @@
 .card-box {
-    height: 14.5rem;
-    width: 12rem;
+    padding: 2rem;
+    min-width: 160px;
     box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
     -webkit-box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 1px 1px 32px -6px rgba(0, 0, 0, 0.75);
